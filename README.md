@@ -12,6 +12,10 @@ echo "some text" | ask --prompt technologies
 ask --prompt web/technologies "$(cat some_file.txt)"
 ```
 
+
+https://github.com/user-attachments/assets/21edac72-80b7-48ee-ab41-0c3b783050b9
+
+
 ## How to use
 
 1. Ensure docker is running 
