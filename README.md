@@ -22,7 +22,7 @@ ask --prompt web/technologies "$(cat some_file.txt)"
 ## Requirements
 
 1. Install docker
-2. Install piper extension in Burp Suite
+2. Install [piper extension](https://portswigger.net/bappstore/e4e0f6c4f0274754917dcb5f4937bb9e) in Burp Suite
 
 ## Installation
 
