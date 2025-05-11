@@ -1,6 +1,6 @@
 # PIPER AI
 
-Simple setup for baking LLMs into piper. Put your prompts in the prompts folder and presto! Use them in piper. Example prompt and config entry for piper provided.
+Simple setup for baking LLMs into piper. It's built around ollama in docker, so it's relatively portable. Example prompt and config entry for piper provided. 
 
 ## Example script usage
 
@@ -17,6 +17,8 @@ https://github.com/user-attachments/assets/21edac72-80b7-48ee-ab41-0c3b783050b9
 
 
 ## How to use
+
+Put your prompts in the prompts folder and presto! Use them in piper.
 
 1. Ensure docker is running 
 2. Start ollama `docker start ollama`
