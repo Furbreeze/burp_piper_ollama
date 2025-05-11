@@ -2,6 +2,8 @@
 
 Simple setup for baking LLMs into piper. It's built around ollama in docker, so it's relatively portable. Example prompt and config entry for piper provided. 
 
+You can use this to analyze the technologies a server uses based on HTTP responses, or generate an erotic novel based on them see [here](./prompts/web/erotic_novel.md). This is a general purpose thing and it's up to you to use it.
+
 ## Example script usage
 
 ```bash
