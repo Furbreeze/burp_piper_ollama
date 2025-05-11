@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Configuration
+PROMPTS_DIR="${PROMPTS_DIR:-$(dirname $0)/prompts}"
+
+# Function to show usage
+usage() {
+  echo "Usage: $0 [--prompt PROMPT_NAME] [text]"
+  echo "  - Provide text as arguments: $0 What is the capital of France?"
+  echo "  - Use with prompt: $0 --prompt coding Write a function to sort an array"
+  echo "  - Or pipe text to stdin: echo 'What is the capital of France?' | $0"
+  echo ""
+  echo "Prompts are loaded from $PROMPTS_DIR"
+  exit 1
+}
+
+# Parse arguments for prompt option
+prompt_name=""
+if [[ "$1" == "--prompt" ]] && [[ -n "$2" ]]; then
+  prompt_name="$2"
+  shift 2  # Remove --prompt and its value from arguments
+fi
+
+# Check if we have stdin data or arguments
+if [ -t 0 ] && [ $# -eq 0 ]; then
+  # No stdin and no arguments
+  usage
+fi
+
+# If we have stdin data, use that
+if [ ! -t 0 ]; then
+  # Read from stdin
+  user_input=$(cat)
+else
+  # Use arguments
+  user_input="$*"
+fi
+
+# If prompt name was provided, load the prompt file
+full_input="$user_input"
+if [[ -n "$prompt_name" ]]; then
+  prompt_file="${PROMPTS_DIR}/${prompt_name}.md"
+
+  if [[ -f "$prompt_file" ]]; then
+    prompt_data=$(cat "$prompt_file")
+    full_input="${prompt_data}
+${user_input}"
+  else
+    echo "Error: Prompt file not found: $prompt_file" >&2
+    exit 1
+  fi
+fi
+
+# Run the command with the processed input
+docker exec ollama ollama run gemma3 "$full_input"

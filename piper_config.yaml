@@ -1,0 +1,14 @@
+messageViewers:
+menuItems:
+commentators:
+- prefix: [<path_to_this_repo>/ask, --prompt, web/technologies]
+  inputMethod: stdin
+  passHeaders: true
+  name: Get tech
+  scope: response_only
+- prefix: [<path_to_this_repo>/ask, --prompt, test]
+  inputMethod: stdin
+  passHeaders: true
+  name: Test
+  scope: response_only
+
