@@ -52,4 +52,4 @@ ${user_input}"
 fi
 
 # Run the command with the processed input
-docker exec ollama ollama run gemma3:27b "$full_input"
+docker exec ollama ollama run gemma3 "$full_input"
